@@ -1,6 +1,7 @@
 package main
 
 import (
+	"RichKernigan/ch7/linecounter"
 	"fmt"
 	"sync"
 )
@@ -29,6 +30,41 @@ func (r *Rocket) Launch() {
 }
 
 func main() {
+	lineCntrRun()
+}
+
+const text = "First Line\nSecond Line\nThird Line"
+
+func lineCntrRun() {
+	var l linecounter.LineCounter
+	l.Write([]byte(text))
+	fmt.Println(l)
+
+	l = 0
+	fmt.Fprintf(&l, "%s", text)
+	fmt.Println(l)
+}
+
+/*
+func wordCntrRun() {
+	var w wordcounter.WordCounter
+	w.Write([]byte(text))
+	fmt.Println(w)
+}
+
+
+func byteCntrRun() {
+	var c bytecounter.ByteCounter
+	c.Write([]byte("hello"))
+	// fmt.Println(c)
+
+	c = 0
+	var name = "Dolly"
+	fmt.Fprintf(&c, "hello, %s", name)
+	fmt.Println(c)
+}
+
+func unusedExamples() {
 	// p, q := geometry.Point{1, 2}, geometry.Point{4, 6}
 	// distance := geometry.Point.Distance
 	// fmt.Println(distance(p, q))
@@ -62,5 +98,4 @@ func main() {
 	// fmt.Println(&x)
 	// fmt.Println(x.String())
 	// fmt.Println(x)
-
-}
+}*/
