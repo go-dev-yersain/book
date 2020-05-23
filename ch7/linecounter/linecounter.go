@@ -3,6 +3,7 @@ package linecounter
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"os"
 	"strings"
 )
@@ -11,6 +12,7 @@ import (
 type LineCounter int
 
 func (c *LineCounter) Write(p []byte) (int, error) {
+	io.LimitedReader
 	scanner := bufio.NewScanner(strings.NewReader(string(p)))
 	scanner.Split(bufio.ScanLines)
 	count := 0
